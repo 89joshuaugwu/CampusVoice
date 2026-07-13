@@ -55,8 +55,8 @@ export function AdminQueueTable() {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-center gap-2">
-        <div className="flex gap-1 overflow-x-auto no-scrollbar rounded-xl bg-slate-100 p-1">
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        <div className="flex w-full gap-1 overflow-x-auto no-scrollbar rounded-xl bg-slate-100 p-1 sm:w-auto">
           {TABS.map((t) => (
             <button
               key={t.value}
@@ -72,24 +72,26 @@ export function AdminQueueTable() {
             </button>
           ))}
         </div>
-        <Select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="w-auto min-h-0 py-1.5 text-sm"
-        >
-          <option value="all">All categories</option>
-          {categories.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </Select>
-        <button
-          onClick={() => setSortDesc((s) => !s)}
-          className="ml-auto text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]"
-        >
-          Date {sortDesc ? "↓ Newest" : "↑ Oldest"}
-        </button>
+        <div className="flex items-center gap-2 sm:contents">
+          <Select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="min-h-0 flex-1 py-1.5 text-sm sm:flex-none sm:w-auto"
+          >
+            <option value="all">All categories</option>
+            {categories.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </Select>
+          <button
+            onClick={() => setSortDesc((s) => !s)}
+            className="shrink-0 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] sm:ml-auto"
+          >
+            Date {sortDesc ? "↓ Newest" : "↑ Oldest"}
+          </button>
+        </div>
       </div>
 
       {loading ? (

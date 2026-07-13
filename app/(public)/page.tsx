@@ -79,15 +79,15 @@ export default function LandingPage() {
               problems, academic disputes, or anything else. Submit in minutes. Follow it to
               resolution with a single code.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/submit">
-                <Button size="lg">
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link href="/submit" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   <FilePlus2 className="h-4 w-4" />
                   Submit a Complaint
                 </Button>
               </Link>
-              <Link href="/track">
-                <Button size="lg" variant="secondary">
+              <Link href="/track" className="w-full sm:w-auto">
+                <Button size="lg" variant="secondary" className="w-full sm:w-auto">
                   <Search className="h-4 w-4" />
                   Track a Complaint
                 </Button>
