@@ -63,13 +63,13 @@ export default function SignupPage() {
             required
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
-            placeholder="Ugwu Joshua Chimaobi"
+            placeholder="Ejike Kingsley"
           />
           <Input
             label="Reg number"
             value={regNumber}
             onChange={(e) => setRegNumber(e.target.value)}
-            placeholder="2022030202909"
+            placeholder="2022030212345"
           />
           <Input
             label="Email"
