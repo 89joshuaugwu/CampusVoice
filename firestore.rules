@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function getRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    match /users/{uid} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.role == "student"; // no self-assigned admin
+      allow update: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.role == resource.data.role;
+    }
+
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if request.auth != null && getRole() == "admin";
+    }
+
+    // Complaints and responses are NOT directly readable/writable by clients
+    // at all — every access path (submit, track, reply, admin review) goes
+    // through server routes using firebase-admin, per lib/complaints.ts. This
+    // is the correct pattern here specifically because "anonymous" access mode
+    // has no request.auth to check against — client rules literally cannot
+    // express "has this tracking code" as a condition, since the code lives
+    // in the request payload, not in an auth token.
+    match /complaints/{complaintId} {
+      allow read, write: if false;
+
+      match /responses/{responseId} {
+        allow read, write: if false;
+      }
+    }
+
+    match /notifications/{uid}/items/{notifId} {
+      allow read, update: if request.auth != null && request.auth.uid == uid;
+      allow create: if request.auth != null;
+    }
+  }
+}

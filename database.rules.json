@@ -1,0 +1,15 @@
+{
+  "rules": {
+    // CampusVoice's entire data model (users, categories, complaints,
+    // responses, notifications) lives in Firestore — see firestore.rules.
+    // The Realtime Database is NOT used anywhere in this app. Firebase
+    // projects provision an RTDB instance by default even when you don't
+    // plan to use it, and its default rules are wide open, so this file
+    // locks it down completely rather than leaving an unused, unsecured
+    // database sitting on the project. If a future feature (e.g. typing
+    // indicators or presence) needs RTDB, scope rules narrowly per-path
+    // instead of loosening this root rule.
+    ".read": false,
+    ".write": false
+  }
+}
