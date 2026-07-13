@@ -231,7 +231,7 @@ export default function LandingPage() {
             It takes less time to submit a complaint than to explain it to a friend.
           </p>
           <Link href="/submit" className="mt-6 inline-block">
-            <Button size="lg" className="bg-white text-[var(--color-primary)] hover:bg-blue-50">
+            <Button size="lg" className="bg-white text-[var(--color-primary)] hover:bg-blue-50 font-medium">
               Submit a Complaint
             </Button>
           </Link>
