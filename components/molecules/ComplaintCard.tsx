@@ -14,7 +14,9 @@ export function ComplaintCard({ complaint, href }: { complaint: Complaint; href:
           <p className="truncate font-mono text-xs text-[var(--color-text-secondary)]">
             {complaint.trackingCode}
           </p>
-          <p className="truncate font-semibold text-[var(--color-text-primary)]">{complaint.title}</p>
+          <p className="line-clamp-2 break-words font-semibold text-[var(--color-text-primary)]">
+            {complaint.title}
+          </p>
           <div className="flex flex-wrap items-center gap-2">
             <CategoryTag category={complaint.category} />
             <StatusBadge status={complaint.status} />
