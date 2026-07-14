@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { EyeOff, Paperclip, StickyNote } from "lucide-react";
+import { EyeOff, StickyNote } from "lucide-react";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { CategoryTag } from "@/components/ui/CategoryTag";
 import { Select } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { ThreadMessage } from "@/components/molecules/ThreadMessage";
 import { ThreadReplyBox } from "@/components/molecules/ThreadReplyBox";
+import { AttachmentGrid } from "@/components/molecules/AttachmentGrid";
 import { formatDate } from "@/lib/utils";
 import { authedJson } from "@/lib/api-client";
 import type { AuthContext, ComplaintStatus, ComplaintWithResponses } from "@/types/complaint";
@@ -133,22 +134,7 @@ export function ComplaintThreadView({
 
         <p className="text-sm leading-relaxed text-[var(--color-text-primary)]">{complaint.description}</p>
 
-        {complaint.attachments.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {complaint.attachments.map((url, i) => (
-              <a
-                key={url}
-                href={url}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 rounded-lg border border-[var(--color-border)] px-2.5 py-1.5 text-xs text-[var(--color-primary)] hover:bg-blue-50"
-              >
-                <Paperclip className="h-3.5 w-3.5" />
-                Attachment {i + 1}
-              </a>
-            ))}
-          </div>
-        )}
+        {complaint.attachments.length > 0 && <AttachmentGrid attachments={complaint.attachments} />}
 
         {isAdmin && (
           <div className="rounded-xl border border-amber-200 bg-amber-50/60 p-3">
