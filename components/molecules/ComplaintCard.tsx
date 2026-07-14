@@ -8,8 +8,8 @@ import type { Complaint } from "@/types/complaint";
 
 export function ComplaintCard({ complaint, href }: { complaint: Complaint; href: string }) {
   return (
-    <Link href={href}>
-      <Card className="flex items-center justify-between gap-3 p-4 transition-shadow hover:shadow-md">
+    <Link href={href} className="block w-full min-w-0">
+      <Card className="flex min-w-0 items-center justify-between gap-3 p-4 transition-shadow hover:shadow-md">
         <div className="min-w-0 flex-1 space-y-1.5">
           <p className="truncate font-mono text-xs text-[var(--color-text-secondary)]">
             {complaint.trackingCode}

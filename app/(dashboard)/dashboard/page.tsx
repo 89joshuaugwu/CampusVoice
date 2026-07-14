@@ -43,7 +43,7 @@ function StudentHome() {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <Link href="/submit">
+        <Link href="/submit" className="block">
           <Card className="flex items-center gap-3 p-5 transition-shadow hover:shadow-md">
             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50">
               <FilePlus2 className="h-5 w-5 text-[var(--color-primary)]" />
@@ -54,7 +54,7 @@ function StudentHome() {
             </div>
           </Card>
         </Link>
-        <Link href="/dashboard/my-complaints">
+        <Link href="/dashboard/my-complaints" className="block">
           <Card className="flex items-center gap-3 p-5 transition-shadow hover:shadow-md">
             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50">
               <ListChecks className="h-5 w-5 text-[var(--color-accent)]" />
@@ -123,19 +123,19 @@ function AdminHome() {
       </div>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <Link href="/dashboard/admin/queue">
+        <Link href="/dashboard/admin/queue" className="block">
           <Card className="flex items-center gap-3 p-5 transition-shadow hover:shadow-md">
             <Inbox className="h-5 w-5 text-[var(--color-primary)]" />
             <p className="font-semibold text-[var(--color-text-primary)]">Queue</p>
           </Card>
         </Link>
-        <Link href="/dashboard/admin/categories">
+        <Link href="/dashboard/admin/categories" className="block">
           <Card className="flex items-center gap-3 p-5 transition-shadow hover:shadow-md">
             <Tags className="h-5 w-5 text-[var(--color-primary)]" />
             <p className="font-semibold text-[var(--color-text-primary)]">Categories</p>
           </Card>
         </Link>
-        <Link href="/dashboard/admin/reports">
+        <Link href="/dashboard/admin/reports" className="block">
           <Card className="flex items-center gap-3 p-5 transition-shadow hover:shadow-md">
             <BarChart3 className="h-5 w-5 text-[var(--color-primary)]" />
             <p className="font-semibold text-[var(--color-text-primary)]">Reports</p>
